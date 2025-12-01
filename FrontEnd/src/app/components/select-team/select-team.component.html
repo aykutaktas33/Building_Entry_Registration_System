@@ -1,0 +1,24 @@
+<div class="team-container">
+  <div class="card">
+    <h2>Select Team</h2>
+    <p class="subtitle">Please select your team</p>
+
+    <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <select formControlName="teamId" class="form-select">
+          <option value="">Select a team</option>
+          <option value="1">Development Team</option>
+          <option value="2">Design Team</option>
+          <option value="3">Marketing Team</option>
+          <option value="4">Sales Team</option>
+          <option value="5">Support Team</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-outline" (click)="goBack()">Back</button>
+        <button type="submit" [disabled]="teamForm.invalid" class="btn-primary">Next</button>
+      </div>
+    </form>
+  </div>
+</div>

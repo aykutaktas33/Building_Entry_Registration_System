@@ -1,0 +1,16 @@
+{
+  "/api": {
+    "target": "http://localhost:5000",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "headers": {
+      "Host": "localhost:5000",
+      "Accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    "ssl": {
+      "rejectUnauthorized": false
+    }
+  }
+}

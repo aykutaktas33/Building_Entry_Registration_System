@@ -1,0 +1,49 @@
+<div class="personal-container">
+  <div class="card">
+    <h2>Personal Information</h2>
+    <p class="subtitle">Please provide your personal details</p>
+
+    <form [formGroup]="personalForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          placeholder="Enter your full name">
+        <div *ngIf="personalForm.get('name')?.invalid && personalForm.get('name')?.touched" class="error-message">
+          Name is required and must be at least 2 characters
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email">
+        <div *ngIf="personalForm.get('email')?.invalid && personalForm.get('email')?.touched" class="error-message">
+          Valid email is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company Name *</label>
+        <input
+          type="text"
+          id="company"
+          formControlName="company"
+          placeholder="Enter your company name">
+        <div *ngIf="personalForm.get('company')?.invalid && personalForm.get('company')?.touched" class="error-message">
+          Company name is required
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-outline" (click)="goBack()">Back</button>
+        <button type="submit" [disabled]="personalForm.invalid" class="btn-primary">Next</button>
+      </div>
+    </form>
+  </div>
+</div>

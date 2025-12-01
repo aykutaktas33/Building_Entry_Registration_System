@@ -1,0 +1,44 @@
+<div class="entrance-container">
+  <div class="card">
+    <h2>Building Entry Registration</h2>
+    <p class="subtitle">Please enter the entrance ID to begin</p>
+    
+    <form [formGroup]="entranceForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="entranceId">Entrance ID</label>
+        <input 
+          type="text" 
+          id="entranceId" 
+          formControlName="entranceId" 
+          placeholder="Enter entrance ID or scan QR code"
+          [class.error]="entranceForm.get('entranceId')?.invalid && entranceForm.get('entranceId')?.touched">
+        
+        <div *ngIf="entranceForm.get('entranceId')?.invalid && entranceForm.get('entranceId')?.touched" class="error-message">
+          <div *ngIf="entranceForm.get('entranceId')?.errors?.['required']">Entrance ID is required</div>
+          <div *ngIf="entranceForm.get('entranceId')?.errors?.['minlength']">Entrance ID must be at least 3 characters</div>
+        </div>
+      </div>
+      
+      <div *ngIf="errorMessage" class="error-message server-error">
+        {{ errorMessage }}
+      </div>
+      
+      <div class="actions">
+        <button 
+          type="submit" 
+          [disabled]="entranceForm.invalid || isLoading"
+          class="btn-primary">
+          {{ isLoading ? 'Validating...' : 'Proceed' }}
+        </button>
+      </div>
+      
+      <div class="qr-section">
+        <p class="qr-hint">Or scan QR code with your device camera</p>
+        <div class="qr-placeholder">
+          <div class="qr-icon">📷</div>
+          <p>Point camera at QR code</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
